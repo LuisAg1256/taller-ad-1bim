@@ -1,2 +1,13 @@
 todo-docker/data/*
 !todo-docker/data/.gitkeep
+# Compilados de Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Bases de datos locales (SQLite)
+*.db
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
