@@ -14,7 +14,7 @@ class Facultad(Base):
     carreras = relationship("Carrera", back_populates="facultad")
 
     def __str__(self):
-        return f"{self.nombre_oficial} - {self.decano}"
+        return f"Facultad[ID={self.id}, Nombre='{self.nombre_oficial}', Ubicación='{self.ubicacion}', Decano='{self.decano}']"
 
 
 class Carrera(Base):
@@ -28,7 +28,7 @@ class Carrera(Base):
     profesores = relationship("Profesor", back_populates="carrera")
 
     def __str__(self):
-        return f"{self.nombre} - Código: {self.codigo}"
+        return f"Carrera[ID={self.id}, Nombre='{self.nombre}', Código='{self.codigo}', ID_Facultad={self.facultad_id}]"
 
 
 class Profesor(Base):
@@ -44,7 +44,7 @@ class Profesor(Base):
     recursos = relationship("RecursoAcademico", back_populates="profesor")
 
     def __str__(self):
-        return f"{self.nombres} {self.apellidos} - {self.especialidad}"
+        return f"Profesor[ID={self.id}, Nombres='{self.nombres}', Apellidos='{self.apellidos}', Correo='{self.correo}', Especialidad='{self.especialidad}', ID_Carrera={self.carrera_id}]"
 
 
 class RecursoAcademico(Base):
@@ -59,7 +59,7 @@ class RecursoAcademico(Base):
     profesor = relationship("Profesor", back_populates="recursos")
 
     def __str__(self):
-        return f"{self.titulo} ({self.tipo}) - {self.fecha_publicacion}"
+        return f"RecursoAcademico[ID={self.id}, Título='{self.titulo}', Fecha='{self.fecha_publicacion}', Tipo='{self.tipo}', URL='{self.url}', ID_Profesor={self.profesor_id}]"
 
 
 Base.metadata.create_all(engine)
